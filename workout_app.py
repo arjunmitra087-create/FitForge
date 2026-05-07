@@ -8,7 +8,7 @@ import json
 import os
 import sqlite3
 from datetime import datetime, timedelta
-from flask import Flask, render_template, request, redirect, url_for, jsonify, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, jsonify, send_from_directory, g
 
 app = Flask(__name__, static_folder='static')
 
