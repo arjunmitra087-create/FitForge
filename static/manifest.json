@@ -1,12 +1,10 @@
 {
     "name": "FitForge",
     "short_name": "FitForge",
-    "description": "Premium workout tracker and fitness planner.",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#111111",
+    "background_color": "#ffffff",
     "theme_color": "#ff6600",
-    "id": "/",
     "icons": [
         {
             "src": "/static/icon-192.png",
