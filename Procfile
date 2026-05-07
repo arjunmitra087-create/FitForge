@@ -1,1 +1,1 @@
-web: python workout_app.py
+web: gunicorn workout_app:app
