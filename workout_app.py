@@ -11,6 +11,9 @@ from datetime import datetime, timedelta
 from flask import Flask, render_template, request, redirect, url_for, jsonify, send_from_directory, g
 
 app = Flask(__name__, static_folder='static')
+@app.route('/manifest.json')
+def manifest():
+    return send_from_directory('static', 'manifest.json')
 
 @app.route('/static/<path:filename>')
 def static_files(filename):
