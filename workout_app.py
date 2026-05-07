@@ -13,11 +13,11 @@ from flask import Flask, render_template, send_from_directory
 app = Flask(__name__)
 @app.route('/manifest.json')
 def manifest():
-    return send_from_directory('static', 'manifest.json')
+    return app.send_static_file('manifest.json')
 
 @app.route('/service-worker.js')
 def service_worker():
-    return send_from_directory('static', 'service-worker.js')
+    return app.send_static_file('service-worker.js')
 
 app.config["SECRET_KEY"] = "fitforge-secret-key-2026"
 
