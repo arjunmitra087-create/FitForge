@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FitForge — Workout Tracker</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+
+    <link rel="manifest" href="/static/manifest.json">
+    <meta name="theme-color" content="#ff6600">
+
+</head>
+
+<body>
+
+    <nav id="sidebar">
+        <div class="logo"><span class="logo-icon">🏋️</span> FitForge</div>
+
+        <ul class="nav-links">
+            <li><a href="#" class="nav-link active" data-tab="dashboard">📊 Dashboard</a></li>
+            <li><a href="#" class="nav-link" data-tab="exercises">💪 Exercises</a></li>
+            <li><a href="#" class="nav-link" data-tab="templates">📋 Workouts</a></li>
+            <li><a href="#" class="nav-link" data-tab="active">⏱️ Active</a></li>
+            <li><a href="#" class="nav-link" data-tab="history">📈 History</a></li>
+        </ul>
+    </nav>
+
+    <main id="content">
+
+        <!-- Dashboard -->
+        <section id="tab-dashboard" class="tab-panel active">
+            <h1>Dashboard</h1>
+
+            <div class="stats-grid" id="stats-grid"></div>
+
+            <div class="card mt">
+                <h2>🏆 Personal Records</h2>
+                <div id="pr-list" class="pr-list"></div>
+            </div>
+
+            <div class="card mt">
+                <h2>📊 Category Breakdown</h2>
+                <div id="cat-chart" class="cat-chart"></div>
+            </div>
+        </section>
+
+        <!-- Exercises -->
+        <section id="tab-exercises" class="tab-panel">
+
+            <h1>Exercise Library</h1>
+
+            <div class="filter-bar">
+                <select id="cat-filter">
+                    <option value="">All Categories</option>
+                    <option>Chest</option>
+                    <option>Back</option>
+                    <option>Legs</option>
+                    <option>Shoulders</option>
+                    <option>Arms</option>
+                    <option>Core</option>
+                </select>
+
+                <button class="btn btn-primary" onclick="showAddExercise()">
+                    + Add Exercise
+                </button>
+            </div>
+
+            <div id="exercise-list" class="exercise-grid"></div>
+
+            <div id="add-exercise-modal" class="modal hidden">
+
+                <div class="modal-content">
+
+                    <h2>Add Custom Exercise</h2>
+
+                    <input id="ex-name" placeholder="Exercise name" class="input">
+
+                    <select id="ex-cat" class="input">
+                        <option>Chest</option>
+                        <option>Back</option>
+                        <option>Legs</option>
+                        <option>Shoulders</option>
+                        <option>Arms</option>
+                        <option>Core</option>
+                    </select>
+
+                    <input id="ex-muscle" placeholder="Muscle group" class="input">
+
+                    <input id="ex-equip" placeholder="Equipment" class="input">
+
+                    <textarea id="ex-desc" placeholder="Description" class="input"></textarea>
+
+                    <div class="modal-actions">
+                        <button class="btn btn-ghost" onclick="closeModal()">
+                            Cancel
+                        </button>
+
+                        <button class="btn btn-primary" onclick="addExercise()">
+                            Add
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Templates -->
+        <section id="tab-templates" class="tab-panel">
+
+            <h1>Workout Templates</h1>
+
+            <div id="template-list" class="template-grid"></div>
+
+        </section>
+
+        <!-- Active Workout -->
+        <section id="tab-active" class="tab-panel">
+
+            <div id="no-active" class="empty-state">
+                <span class="empty-icon">⏱️</span>
+
+                <h2>No Active Workout</h2>
+
+                <p>Start a workout from the Workouts tab</p>
+            </div>
+
+            <div id="active-workout" class="hidden">
+
+                <div class="active-header">
+                    <h1 id="active-name">Workout</h1>
+                    <div class="timer" id="timer">00:00</div>
+                </div>
+
+                <div id="active-exercises"></div>
+
+                <div class="rest-overlay hidden" id="rest-overlay">
+
+                    <div class="rest-content">
+                        <h2>Rest Timer</h2>
+
+                        <div class="rest-timer" id="rest-timer">60</div>
+
+                        <button class="btn btn-primary" onclick="skipRest()">
+                            Skip
+                        </button>
+                    </div>
+
+                </div>
+
+                <button class="btn btn-finish" onclick="finishWorkout()">
+                    ✅ Finish Workout
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- History -->
+        <section id="tab-history" class="tab-panel">
+
+            <h1>Workout History</h1>
+
+            <div id="history-list" class="history-list"></div>
+
+        </section>
+
+    </main>
+
+    <script src="/static/app.js"></script>
+
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/static/service-worker.js");
+        }
+    </script>
+
+</body>
+
+</html>

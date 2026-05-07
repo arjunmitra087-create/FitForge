@@ -1,0 +1,16 @@
+{
+    "name": "FitForge",
+    "short_name": "FitForge",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f0f0f",
+    "theme_color": "#ff6600",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/static/icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
