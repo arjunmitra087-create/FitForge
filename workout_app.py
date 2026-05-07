@@ -11,13 +11,6 @@ from datetime import datetime, timedelta
 from flask import Flask, render_template, request, redirect, url_for, jsonify, send_from_directory
 
 app = Flask(__name__)
-@app.route('/manifest.json')
-def manifest():
-    return send_from_directory('static', 'manifest.json')
-
-@app.route('/service-worker.js')
-def service_worker():
-    return send_from_directory('static', 'service-worker.js')
 
 app.config["SECRET_KEY"] = "fitforge-secret-key-2026"
 

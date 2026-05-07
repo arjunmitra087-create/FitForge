@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="/static/style.css">
 
     <link rel="manifest" href="/manifest.json">
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/static/service-worker.js');
+        }
+    </script>
     <meta name="theme-color" content="#ff6600">
 
 </head>
