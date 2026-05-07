@@ -8,9 +8,17 @@ import json
 import os
 import sqlite3
 from datetime import datetime, timedelta
-from flask import Flask, render_template, request, jsonify, g
+from flask import Flask, render_template, send_from_directory
 
 app = Flask(__name__)
+@app.route('/manifest.json')
+def manifest():
+    return send_from_directory('static', 'manifest.json')
+
+@app.route('/service-worker.js')
+def service_worker():
+    return send_from_directory('static', 'service-worker.js')
+
 app.config["SECRET_KEY"] = "fitforge-secret-key-2026"
 
 DATABASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fitforge.db")
