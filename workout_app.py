@@ -8,16 +8,16 @@ import json
 import os
 import sqlite3
 from datetime import datetime, timedelta
-from flask import Flask, render_template, send_from_directory
+from flask import send_from_directory
 
 app = Flask(__name__)
 @app.route('/manifest.json')
 def manifest():
-    return app.send_static_file('manifest.json')
+    return send_from_directory('static', 'manifest.json')
 
 @app.route('/service-worker.js')
 def service_worker():
-    return app.send_static_file('service-worker.js')
+    return send_from_directory('static', 'service-worker.js')
 
 app.config["SECRET_KEY"] = "fitforge-secret-key-2026"
 
